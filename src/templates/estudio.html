@@ -1,0 +1,38 @@
+{%extends 'base.html'%} {%block body%}
+<article class="media content-section animated bounceInDown fast">
+    <img class='rounded-circle article-img' src="{{ url_for('static', filename='profile-pic/'+creador.image) }}">
+    <div class="media-body">
+        <div class="article-metadata">
+            <h2 class='article-title'>{{ estudio.titulo }}</h2>
+            Paciente: <a class="mr-2" href="#">{{estudio.apellido_paciente+' '+estudio.nombre_paciente}}</a></br>
+            Edad: <a class="mr-2" href="#">{{estudio.edad}}</a></br>
+            Dotor: <a class="mr-2" href="#">{{ estudio.apellido_doctor+' '+estudio.nombre_doctor}}</a></br>
+            Fecha: <small class="text-muted">{{estudio.fecha }}</small>
+        </div>
+        <div class="article-metadata">
+            <h2 class="article-title"> Contenido</h2>
+            <p class="article-content">
+                {{'Sintomas: '+ estudio.contenido+'\n'+'Diagnostico: '+ estudio.diagnostico+'\n'+'Comentarios: '+ estudio.comentarios}}
+            </p>
+        </div>
+        <h2 class="article-title">Archivos</h2>
+        {% for archivo in estudio.archivos %}
+        {% if archivo[0] != 'nada'%}
+        <div>
+            {% if archivo[1] == '6' or archivo[1] == '7' or archivo[1] == '8' %}
+            <a href='{{url_for('static', filename='estudio-pic/'+archivo[0])}}'
+                download='{{'TOMOGRAFIA'+archivo[1]+'-'+estudio.apellido_paciente+estudio.nombre_paciente+archivo[2]}}'>
+                {{'TOMOGRAFIA'+archivo[1]+'-'+estudio.apellido_paciente+estudio.nombre_paciente+archivo[2]}}</a>
+            {% else %}
+            <a href='{{url_for('static', filename='estudio-pic/'+archivo[0])}}'
+                download='{{'RX'+archivo[1]+'-'+estudio.apellido_paciente+estudio.nombre_paciente+archivo[2]}}'>
+                {{'RX'+archivo[1]+'-'+estudio.apellido_paciente+estudio.nombre_paciente+archivo[2]}}</a>
+            {% endif %}
+        </div>
+        {% endif %}
+        {% endfor %}
+
+    </div>
+
+</article>
+{% endblock %}

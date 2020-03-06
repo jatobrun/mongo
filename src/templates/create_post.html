@@ -1,0 +1,194 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="content-section animated fadeInUp">
+    <form method="POST" action="" enctype='multipart/form-data'>
+        {{form.hidden_tag()}}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4"></legend>{{legend}}</legend>
+            <div class="form-group">
+                {{form.titulo.label(class="form-control-label")}} {% if
+          form.titulo.errors %} {{ form.titulo(class="form-control
+          form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.titulo.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %} {{ form.titulo(class="form-control form-control-lg") }} {%
+          endif %}
+            </div>
+            <div class="form-group">
+                {{form.nombre_paciente.label(class="form-control-label")}} {% if
+          form.nombre_paciente.errors %} {{ form.nombre_paciente(class="form-control
+          form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.nombre_paciente.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %} {{ form.nombre_paciente(class="form-control form-control-lg") }} {%
+          endif %}
+            </div>
+            <div class="form-group">
+                {{form.apellido_paciente.label(class="form-control-label")}} {% if
+            form.apellido_paciente.errors %} {{ form.apellido_paciente(class="form-control
+            form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.apellido_paciente.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %} {{ form.apellido_paciente(class="form-control form-control-lg") }} {%
+            endif %}
+            </div>
+            <div class="form-group">
+                {{form.edad.label(class="form-control-label")}}{% if
+            form.edad.errors %} {{ form.edad(class="form-control
+            form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.edad.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %} {{ form.edad(class="form-control form-control-lg") }} {%
+            endif %}
+            </div>
+            <div class="form-group">
+                {{form.nombre_doctor.label(class="form-control-label")}} {% if
+            form.nombre_doctor.errors %} {{ form.nombre_doctor(class="form-control
+            form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.nombre_doctor.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %} {{ form.nombre_doctor(class="form-control form-control-lg") }} {%
+            endif %}
+            </div>
+            <div class="form-group">
+                {{form.apellido_doctor.label(class="form-control-label")}} {% if
+            form.apellido_doctor.errors %} {{ form.apellido_doctor(class="form-control
+            form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.apellido_doctor.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %} {{ form.apellido_doctor(class="form-control form-control-lg") }} {%
+            endif %}
+            </div>
+            <div class="form-group">
+                {{form.contenido.label(class="form-control-label")}} {% if
+            form.contenido.errors %} {{ form.contenido(class="form-control
+            form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.contenido.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %} {{ form.contenido(class="form-control form-control-lg") }} {%
+            endif %}
+            </div>
+            <div class="form-group">
+                {{form.diagnostico.label(class="form-control-label")}} {% if
+            form.diagnostico.errors %} {{ form.diagnostico(class="form-control
+            form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.diagnostico.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %} {{ form.diagnostico(class="form-control form-control-lg") }} {%
+            endif %}
+            </div>
+            <div class="form-group">
+                {{form.comentarios.label(class="form-control-label")}} {% if
+            form.comentarios.errors %} {{ form.comentarios(class="form-control
+            form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.comentarios.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %} {{ form.comentarios(class="form-control form-control-lg") }} {%
+            endif %}
+            </div>
+            <div class="form-group">
+                {{ form.archivo1.label() }}
+                {{ form.archivo1(class='form-control-file') }}
+                {% if form.archivo1.errors %}
+                {% for error in form.archivo1.errors %}
+                <span class='text-danger'>{{ error }}</span></br>
+                {% endfor %}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.archivo2.label() }}
+                {{ form.archivo2(class='form-control-file') }}
+                {% if form.archivo2.errors %}
+                {% for error in form.archivo2.errors %}
+                <span class='text-danger'>{{ error }}</span></br>
+                {% endfor %}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.archivo3.label() }}
+                {{ form.archivo3(class='form-control-file') }}
+                {% if form.archivo3.errors %}
+                {% for error in form.archivo3.errors %}
+                <span class='text-danger'>{{ error }}</span></br>
+                {% endfor %}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.archivo4.label() }}
+                {{ form.archivo4(class='form-control-file') }}
+                {% if form.archivo4.errors %}
+                {% for error in form.archivo4.errors %}
+                <span class='text-danger'>{{ error }}</span></br>
+                {% endfor %}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.archivo5.label() }}
+                {{ form.archivo5(class='form-control-file') }}
+                {% if form.archivo5.errors %}
+                {% for error in form.archivo5.errors %}
+                <span class='text-danger'>{{ error }}</span></br>
+                {% endfor %}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.archivo6.label() }}
+                {{ form.archivo6(class='form-control-file') }}
+                {% if form.archivo6.errors %}
+                {% for error in form.archivo6.errors %}
+                <span class='text-danger'>{{ error }}</span></br>
+                {% endfor %}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.archivo7.label() }}
+                {{ form.archivo7(class='form-control-file') }}
+                {% if form.archivo7.errors %}
+                {% for error in form.archivo7.errors %}
+                <span class='text-danger'>{{ error }}</span></br>
+                {% endfor %}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.archivo8.label() }}
+                {{ form.archivo8(class='form-control-file') }}
+                {% if form.archivo8.errors %}
+                {% for error in form.archivo8.errors %}
+                <span class='text-danger'>{{ error }}</span></br>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </fieldset>
+        <div class="form-group">
+            {{form.submit(class = "btn btn-outline-info")}}
+        </div>
+    </form>
+</div>
+{% endblock %}

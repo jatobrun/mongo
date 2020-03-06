@@ -1,0 +1,87 @@
+{%extends 'base.html'%} {%block body%}
+
+{% if vacio_historial %}
+<div class="media content-section animated bounceInDown fast">
+    <div class ="article-metadata">
+        <h3>Upss no tienes estudios disponibles porfavor ingresa uno!</h3>
+        <a class="nav-item nav-link btn btn-success" href="{{url_for('new')}}">Nuevo Estudio</a>
+    </div>
+
+</div>
+{% else %}
+{%for estudio in estudios%}
+
+<article class="media content-section animated bounceInDown fast">
+
+    <img class='rounded-circle article-img'
+        src="{{ url_for('static', filename='profile-pic/'+estudio['creador-imagen']) }}">
+    <div class="media-body">
+        <div class="article-metadata">
+            <h2><a class="article-title" href="{{ url_for('estudio', _id = estudio._id) }}">{{ estudio.titulo }}</a>
+            </h2>
+            Paciente: <a class="mr-2" href="#">{{ estudio.apellido_paciente+' '+estudio.nombre_paciente}}</a></br>
+            Edad: {{estudio.edad}}
+            Doctor: <a class="mr-2" href="#">{{ estudio.apellido_doctor+' '+estudio.nombre_doctor}}</a></br>
+            Fecha: <a class="mr-2" href="#">{{ estudio.fecha }}</a></br>
+        </div>
+        <div class ="article-metadata">
+            <a class='btn btn-secondary btn-sm mt-1 mb-1 mr-2 p-2'
+                href="{{ url_for('actualizar_estudio', _id=estudio._id) }}">Actualizar</a>
+            <button type="button" class='btn btn-danger btn-sm mt-1 mb-1 ml-1 p-2' data-toggle="modal"
+                data-target="#deleteModal">Borrar</button>
+        </div>
+        <div class = "article-metadata">
+            <form >
+                {{form.hidden_tag()}}
+                <fieldset class ="form-group">
+                    <div class = "form-group">
+                <label>{{form.l_colaborador.label(class="form-control-label")}}</label>
+                {{form.l_colaborador(class="form-control")}}
+            </div>
+            </fieldset>
+                <div class="form-group">
+                    {{ form.submit(class="btn btn-outline-info") }}
+                </div>
+                </form>
+        </div>
+        <div>
+            <h5>Clave del estudio:<a href='#'> {{estudio.token}}</a></h5>
+        </div>
+    </div>
+</article>
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Borrar Estudio?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class='modal-body'>
+                Seguro desea continuar?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <form action="{{ url_for('borrar_estudio', _id=estudio._id) }}" method="POST">
+                    <input class="btn btn-danger" type="submit" value="Borrar">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{%endfor%}
+{% for page in pages %}
+{% if page %}
+{% if current_page == page %}
+<a class="btn btn-info mb-4" href="{{url_for('historial', page=page)}}"> {{page}}</a>
+{% else %}
+<a class="btn btn-outline-info mb-4" href="{{url_for('historial', page=page)}}"> {{page}}</a>
+{% endif %}
+{% else %}
+·
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endblock %}

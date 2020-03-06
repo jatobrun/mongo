@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% block body %}
+{% if vacio_notificaciones %}
+<div class="media content-section animated bounceInDown fast">
+  <div class ="article-metadata">
+      <h3>Felicidades no tienes ningun estudio pendiente!!</h3>
+  </div>
+
+</div>
+{% else %}
+{%for notificacion in notificaciones%}
+
+<article class="media content-section animated bounceInDown fast">
+  <div class="media-body">
+    <div class="article-metadata">
+      <a class="mr-2" href="#">{{ notificacion.autor }}</a>
+      <small class="text-muted">{{ notificacion.fecha }}</small>
+    </div>
+    <h2><a class="article-title" href="#">{{ notificacion.asunto }}</a></h2>
+    <p class="article-content">{{ notificacion.descripcion }}</p>
+  </div>
+</article>
+{%endfor%} 
+{% endif %}
+{% endblock %}
